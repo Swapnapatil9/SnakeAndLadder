@@ -6,7 +6,7 @@ public class SnakeAndLadder {
     static final int NO_PLAY = 0;
     static final int IS_SNAKE = 1;
     static final int IS_LADDER = 2;
-    static final int playersPosition= STARTING_POSITION;
+
     static int diceRoll() {
         int x = (int) (1+ Math.random() * 6);
         return x;
@@ -18,10 +18,13 @@ public class SnakeAndLadder {
     public static void main(String[] args) {
         System.out.println("Welcome to Snake and Ladder program");
 
-        int playersPosition = STARTING_POSITION;
+        int playerPosition = STARTING_POSITION;
 
-        while (playersPosition <= WINNING_POSITION){
+        int diceCount=0;
+
+        while (playerPosition < WINNING_POSITION){
             int roll=diceRoll();
+            diceCount++;
             System.out.println(roll);
 
         int option = getOption();
@@ -29,19 +32,22 @@ public class SnakeAndLadder {
         switch (option) {
             case IS_SNAKE:
                 System.out.println("Snake");
-                playersPosition -= roll;
-                if (playersPosition<0)
-                    playersPosition=STARTING_POSITION;
+                playerPosition -= roll;
+                if (playerPosition<STARTING_POSITION)
+                    playerPosition=STARTING_POSITION;
                 break;
             case IS_LADDER:
                 System.out.println("Ladder");
-                playersPosition += roll;
-                if(playersPosition > WINNING_POSITION)
-                    playersPosition -= roll;
+                playerPosition += roll;
+                if(playerPosition > WINNING_POSITION)
+                    playerPosition -= roll;
                 break;
             default:
                 System.out.println("No play");
         }
+            System.out.println("Dice count:" +diceCount);
+            System.out.println("  ,Player position:" +playerPosition);
         }
+        System.out.println("Total Dice Count:" +diceCount);
     }
 }
