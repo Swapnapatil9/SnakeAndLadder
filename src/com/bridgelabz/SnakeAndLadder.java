@@ -36,6 +36,8 @@ public class SnakeAndLadder {
             case IS_LADDER:
                 System.out.println("Ladder");
                 playersPosition += roll;
+                if(playersPosition > WINNING_POSITION)
+                    playersPosition -= roll;
                 break;
             default:
                 System.out.println("No play");
