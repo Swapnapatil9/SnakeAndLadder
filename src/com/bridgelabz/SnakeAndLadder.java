@@ -20,15 +20,18 @@ public class SnakeAndLadder {
 
         int playersPosition = STARTING_POSITION;
 
-        while (playersPosition < WINNING_POSITION){
+        while (playersPosition <= WINNING_POSITION){
             int roll=diceRoll();
             System.out.println(roll);
 
         int option = getOption();
+
         switch (option) {
             case IS_SNAKE:
                 System.out.println("Snake");
                 playersPosition -= roll;
+                if (playersPosition<0)
+                    playersPosition=STARTING_POSITION;
                 break;
             case IS_LADDER:
                 System.out.println("Ladder");
